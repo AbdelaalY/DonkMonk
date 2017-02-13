@@ -1,15 +1,19 @@
 img {
     width: 200px;
 }
+
 body {
     background-image: url("http://media.danoah.com/wp-content/uploads/2015/08/18014049/weirdest-pictures-on-the-internet-24.jpg");
-       background-repeat:no-repeat;
-       background-size:cover;
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
-    <p><font size="3" color="red">This is some text!</font></p>
 }
+
 body {
     text-align: center;
     font-family: "Arial";
 }
-h1{color:red;}
+
+h1 {
+    color: red;
+}
