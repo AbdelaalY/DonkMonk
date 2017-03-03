@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        canvas {
+            border: 1px solid #d3d3d3;
+            background-color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="1000" height="500"></canvas>
+    <script>
+        var x = 430;
+        var y = 270;
+        var xbox=0;
+        var ybox=0;
+        var canvas = document.getElementById("canvas");
+        var g = canvas.getContext("2d");
+
+        g.strokeStyle = "#000000";
+        g.rect(1000, 700, 100, 100);
+        g.stroke();
+        g.fillStyle = "#ffffff";
+        g.fillRect(420, 200, 200, 100);
+        g.fillStyle = "#ff0000";
+        g.font = "70px Georgia";
+        g.fillText("QUIT", x, y);
+
+        function onMouseMove(e) {
+
+            if (e.x >x && e.x <x+200 && e.y >y-100 && e.y < y) {
+            console.log(e.x + ", " + e.y);
+            x = Math.floor((Math.random() * 800) + 0);
+            y = Math.floor((Math.random() * 450) + 50);
+             g.fillStyle = "#000000";
+            g.fillRect(0, 0, 1000, 500);
+            g.fillStyle = "#ffffff";
+            g.fillRect(x, (y - 90), 200, 100);
+            g.fillStyle = "#ff0000";
+            g.font = "70px Georgia";
+            g.fillText("QUIT", x, y);
+
+            }
+        }
+        canvas.addEventListener("mousemove", onMouseMove);
+    </script>
