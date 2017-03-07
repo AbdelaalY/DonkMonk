@@ -1,50 +1,10 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        canvas {
-            border: 1px solid #d3d3d3;
-            background-color: #000000;
-        }
-    </style>
-</head>
-
 <body>
-    <canvas id="canvas" width="480" height="400"></canvas>
 
 
-    </canvas>
-
-
-    <script>
-        var canvas = document.getElementById("canvas");
-        var g = canvas.getContext("2d");
-        g.fillStyle = "#0000ff";
-        g.fillRect(100, 100, 100, 100);
-        g.strokeStyle = "#000000";
-        g.rect(100, 100, 100, 100);
-        g.stroke();
-
-        function onMouseMove(e) {
-            console.log(e.x + ", " + e.y);
-            if (e.x > 100 && e.x < 200 && e.y > 100 && e.y < 200) {
-                g.fillStyle="#ffffff";
-                g.fillRect(0,0,480,400);
-                g.fillStyle="#000000"
-                g.font="50px Georgia";
-                g.fillText("YOU WIN!", 100, 200);
-
-            }
-
-
-        }
-        canvas.addEventListener("mousemove", onMouseMove);
-    </script>
-
-
-
+<iframe src="/default.asp" width="20000
+" height="20000"></iframe>
+<iframe src="https://xxmrmisterxx.github.io/"></iframe>
 </body>
-
 </html>
