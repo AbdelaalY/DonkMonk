@@ -17,3 +17,8 @@ body {
 h1 {
     color: red;
 }
+
+p {
+    color: white;
+    font-size: 12px;
+}
