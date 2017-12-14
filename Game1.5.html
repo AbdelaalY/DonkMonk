@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        canvas {
+            border: 1px solid #d3d3d3;
+            background-color: #000000;
+        }
+    </style>
+</body>
+<canvas id="canvas" width="1000" height="500"></canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var y = 400;
+    var x = 445;
+    var colornum = 1;
+
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(420, 260, 65, 37);
+    ctx.fillStyle = "#ff0000";
+    ctx.font = "30px Trebuchet";
+    ctx.fillText("Start", 423, 285);
+
+    ctx.fillStyle = "#ff0000";
+    ctx.fillRect(425, 200, 50, 50);
+
+
+    ctx.beginPath();
+    ctx.strokeStyle = 'grey';
+    ctx.moveTo(400, 300);
+    ctx.lineTo(400, 260);
+    ctx.lineTo(380, 280);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fillStyle = "grey";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.strokeStyle = 'grey';
+    ctx.moveTo(500, 300);
+    ctx.lineTo(500, 260);
+    ctx.lineTo(520, 280);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fillStyle = "grey";
+    ctx.fill();
+
+    var onMouseClick1 = function(e) {
+        if (e.x > 430 && e.x < 495 && e.y > 267 && e.y < 310) {
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0, 0, 1500, 500);
+
+            if (colornum == 1) {
+                console.log("red");
+                ctx.fillStyle = "#ff0000";
+                ctx.fillRect(445, 400, 50, 50);
+            }
+            else if (colornum == 2) {
+                console.log("blue");
+                ctx.fillStyle = "#0000ff";
+                ctx.fillRect(445, 400, 50, 50);
+            }
+            else if (colornum == 3) {
+                console.log("green");
+                ctx.fillStyle = "#00ff00";
+                ctx.fillRect(445, 400, 50, 50);
+            }
+            window.onkeydown = function onKeyDown1(e) {
+                var code = e.keyCode ? e.keyCode : e.which;
+                do {
+                    if (code === 38) { //up key
+                        if (colornum == 1) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("red");
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fillRect(x, (y -= 5), 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#ff0000";
+                            ctx.moveTo(x + 20, y);
+                            ctx.lineTo(x + 20, y - 20);
+                            ctx.lineTo(x + 30, y - 20);
+                            ctx.lineTo(x + 30, y);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fill();
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fillRect(x + 12, y - 30, 25, 15);
+                        }
+                        else if (colornum == 2) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("blue");
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fillRect(x, (y -= 5), 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#0000ff";
+                            ctx.moveTo(x + 20, y);
+                            ctx.lineTo(x + 20, y - 20);
+                            ctx.lineTo(x + 30, y - 20);
+                            ctx.lineTo(x + 30, y);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fill();
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fillRect(x + 12, y - 30, 25, 15);
+                        }
+                        else if (colornum == 3) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("green");
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect(x, (y -= 5), 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#00ff00";
+                            ctx.moveTo(x + 20, y);
+                            ctx.lineTo(x + 20, y - 20);
+                            ctx.lineTo(x + 30, y - 20);
+                            ctx.lineTo(x + 30, y);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fill();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect(x + 12, y - 30, 25, 15);
+                        }
+                    }
+                    else
+                    if (code === 40) { //down key
+                        if (colornum == 1) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("red");
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fillRect(x, (y += 5), 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#ff0000";
+                            ctx.moveTo(x + 20, y + 5);
+                            ctx.lineTo(x + 20, y + 75);
+                            ctx.lineTo(x + 30, y + 75);
+                            ctx.lineTo(x + 30, y);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fill();
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fillRect(x + 13, y + 65, 25, 15);
+                        }
+                        else if (colornum == 2) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+                            console.log("blue");
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fillRect(x, (y += 5), 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#0000ff";
+                            ctx.moveTo(x + 20, y + 5);
+                            ctx.lineTo(x + 20, y + 75);
+                            ctx.lineTo(x + 30, y + 75);
+                            ctx.lineTo(x + 30, y);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fill();
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fillRect(x + 13, y + 65, 25, 15);
+                        }
+                        else if (colornum == 3) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("green");
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect(x, (y += 5), 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#00ff00";
+                            ctx.moveTo(x + 20, y + 5);
+                            ctx.lineTo(x + 20, y + 75);
+                            ctx.lineTo(x + 30, y + 75);
+                            ctx.lineTo(x + 30, y);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fill();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect(x + 13, y + 65, 25, 15);
+
+                        }
+                    }
+                    else
+                    if (code == 37) { //left key
+                        if (colornum == 1) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("red");
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fillRect((x -= 5), y, 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#ff0000";
+                            ctx.moveTo(x, y + 20);
+                            ctx.lineTo(x - 20, y + 20);
+                            ctx.lineTo(x - 20, y + 30);
+                            ctx.lineTo(x, y + 30);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fill();
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fillRect(x - 30, y + 12, 15, 25);
+                        }
+                        else if (colornum == 2) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("blue");
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fillRect((x -= 5), y, 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#0000ff";
+                            ctx.moveTo(x, y + 20);
+                            ctx.lineTo(x - 20, y + 20);
+                            ctx.lineTo(x - 20, y + 30);
+                            ctx.lineTo(x, y + 30);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fill();
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fillRect(x - 30, y + 12, 15, 25);
+
+                        }
+                        else if (colornum == 3) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("green");
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect((x -= 5), y, 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#00ff00";
+                            ctx.moveTo(x, y + 20);
+                            ctx.lineTo(x - 20, y + 20);
+                            ctx.lineTo(x - 20, y + 30);
+                            ctx.lineTo(x, y + 30);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fill();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect(x - 30, y + 12, 15, 25);
+
+                        }
+                    }
+                    else
+                    if (code == 39) { //right key
+                        if (colornum == 1) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("red");
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fillRect((x += 5), y, 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = '#ff0000';
+                            ctx.moveTo(x + 50, y + 20);
+                            ctx.lineTo(x + 75, y + 20);
+                            ctx.lineTo(x + 75, y + 30);
+                            ctx.lineTo(x + 50, y + 30);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fill();
+                            ctx.fillStyle = "#ff0000";
+                            ctx.fillRect(x + 65, y + 12, 15, 25);
+                        }
+                        else if (colornum == 2) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("blue");
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fillRect((x += 5), y, 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#0000ff";
+                            ctx.moveTo(x + 50, y + 20);
+                            ctx.lineTo(x + 75, y + 20);
+                            ctx.lineTo(x + 75, y + 30);
+                            ctx.lineTo(x + 50, y + 30);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fill();
+                            ctx.fillStyle = "#0000ff";
+                            ctx.fillRect(x + 65, y + 12, 15, 25);
+                        }
+                        else if (colornum == 3) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                            console.log("green");
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect((x += 5), y, 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#00ff00";
+                            ctx.moveTo(x + 50, y + 20);
+                            ctx.lineTo(x + 75, y + 20);
+                            ctx.lineTo(x + 75, y + 30);
+                            ctx.lineTo(x + 50, y + 30);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fill();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect(x + 65, y + 12, 15, 25);
+                        }
+                    }
+                }
+
+                while (x > 50 && x > 1000 && y > 50 && y < 400);
+            };
+        }
+    };
+    var onMouseClick2 = function(e) {
+        if (e.x > 390 && e.x < 413 && e.y > 260 && e.y < 313) {
+
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0, 0, 1500, 500);
+
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(420, 260, 65, 37);
+            ctx.fillStyle = "#ff0000";
+            ctx.font = "30px Trebuchet";
+            ctx.fillText("Start", 423, 285);
+
+            if (colornum == 1) {
+                console.log("green");
+                ctx.fillStyle = "#00ff00";
+                ctx.fillRect(425, 200, 50, 50);
+                colornum = 3;
+            }
+            else if (colornum == 2) {
+                console.log("red");
+                ctx.fillStyle = "#ff0000";
+                ctx.fillRect(425, 200, 50, 50);
+                colornum = 1;
+            }
+            else if (colornum == 3) {
+                console.log("blue");
+                ctx.fillStyle = "#0000ff";
+                ctx.fillRect(425, 200, 50, 50);
+                colornum = 2;
+            }
+            ctx.beginPath();
+            ctx.strokeStyle = 'grey';
+            ctx.moveTo(400, 300);
+            ctx.lineTo(400, 260);
+            ctx.lineTo(380, 280);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fillStyle = "grey";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.strokeStyle = 'grey';
+            ctx.moveTo(500, 300);
+            ctx.lineTo(500, 260);
+            ctx.lineTo(520, 280);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fillStyle = "grey";
+            ctx.fill();
+        }
+
+        if (e.x > 508 && e.x < 530 && e.y > 260 && e.y < 313) {
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0, 0, 1000, 500);
+
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(420, 260, 65, 37);
+            ctx.fillStyle = "#ff0000";
+            ctx.font = "30px Trebuchet";
+            ctx.fillText("Start", 423, 285);
+
+            if (colornum == 1) {
+                console.log("blue");
+                ctx.fillStyle = "#0000ff";
+                ctx.fillRect(425, 200, 50, 50);
+                colornum = 2;
+            }
+            else if (colornum == 2) {
+                console.log("green");
+                ctx.fillStyle = "#00ff00";
+                ctx.fillRect(425, 200, 50, 50);
+                colornum = 3;
+            }
+            else if (colornum == 3) {
+                console.log("red");
+                ctx.fillStyle = "#ff0000";
+                ctx.fillRect(425, 200, 50, 50);
+                colornum = 1;
+            }
+            ctx.beginPath();
+            ctx.strokeStyle = 'grey';
+            ctx.moveTo(400, 300);
+            ctx.lineTo(400, 260);
+            ctx.lineTo(380, 280);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fillStyle = "grey";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.strokeStyle = 'grey';
+            ctx.moveTo(500, 300);
+            ctx.lineTo(500, 260);
+            ctx.lineTo(520, 280);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fillStyle = "grey";
+            ctx.fill();
+        }
+    };
+    canvas.addEventListener("click", onMouseClick2);
+
+
+    canvas.addEventListener("click", onMouseClick1);
+</script>
+</body>
+
+</html>
