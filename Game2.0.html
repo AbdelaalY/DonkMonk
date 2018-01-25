@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        canvas {
+            border: 1px solid #d3d3d3;
+            background-color: #000000;
+        }
+    </style>
+</body>
+<canvas id="canvas" width="500" height="500"></canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var y = 400;
+    var x = 445;
+    var colornum = 1;
+    var next = 0;
+
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(250, 260, 65, 37);
+    ctx.fillStyle = "#ff0000";
+    ctx.font = "30px Arial";
+    ctx.fillText("Start", 250, 285);
+
+    function Clear() {
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, 500, 500);
+    }
+
+    function Screen2() {
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(165, 50, 200, 30);
+        ctx.fillStyle = "#ff0000";
+        ctx.font = "20px Arial";
+        ctx.fillText("Number Of Players?", 170, 100);
+    }
+
+
+    var onMouseClick1 = function(e) {
+        if (e.x > 258 && e.x < 325 && e.y > 267 && e.y < 310) {
+            Clear();
+            Screen2();
+
+
+        }
+    };
+
+    canvas.addEventListener("click", onMouseClick1);
+</script>
+</body>
+
+</html>

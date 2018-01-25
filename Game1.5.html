@@ -324,6 +324,37 @@
                             ctx.fillStyle = "#00ff00";
                             ctx.fillRect(x + 65, y + 12, 15, 25);
                         }
+
+                    }
+                    if (code == 32) {
+                        if (colornum == 1) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+                        }
+                        else if (colornum == 2) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+
+                        }
+                        else if (colornum == 3) {
+                            ctx.fillStyle = "#000000";
+                            ctx.fillRect(0, 0, 1500, 500);
+                            console.log("green");
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect(x, y, 50, 50);
+                            ctx.beginPath();
+                            ctx.strokeStyle = "#00ff00";
+                            ctx.moveTo(x + 50, y + 20);
+                            ctx.lineTo(x + 75, y + 20);
+                            ctx.lineTo(x + 75, y + 30);
+                            ctx.lineTo(x + 50, y + 30);
+                            ctx.closePath();
+                            ctx.stroke();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fill();
+                            ctx.fillStyle = "#00ff00";
+                            ctx.fillRect(x + 65, y + 12, 15, 25);
+                        }
                     }
                 }
 
@@ -432,8 +463,6 @@
         }
     };
     canvas.addEventListener("click", onMouseClick2);
-
-
     canvas.addEventListener("click", onMouseClick1);
 </script>
 </body>

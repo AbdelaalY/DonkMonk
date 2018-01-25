@@ -19,8 +19,6 @@
         var y = 270;
         var canvas = document.getElementById("canvas");
         var g = canvas.getContext("2d");
-        var back = false;
-
 
 
         g.fillStyle = "#ff0000";
@@ -55,13 +53,14 @@
 
 
 
+
         function onMouseClick2(e) {
             if (e.x > 417 && e.x < 592 && e.y > 237 && e.y < 270) {
                 g.fillStyle = "#000000";
                 g.fillRect(0, 0, 1000, 500);
 
                 g.fillStyle = "#ffffff";
-                g.fillRect(400, 127, 180, 30);
+                g.fillRect(380, 127, 180, 30);
                 g.fillStyle = "#ff0000";
                 g.font = "30px Trebuchet";
                 g.fillText("Quit Color", 420, 150);
@@ -72,32 +71,13 @@
                 g.font = "30px Trebuchet";
                 g.fillText("Allow quiting", 400, 252);
 
-                g.fillStyle = "#ffffff";
-                g.fillRect(400, 330, 170, 30);
-                g.fillStyle = "#ff0000";
-                g.font = "30px Trebuchet";
-                g.fillText("Go Back", 430, 352);
-
-                function onMouseClick3(e) {
-                    if (e.x > 0 && e.x < 1000 && e.y > 0 && e.y < 500) {
-                        back = true;
-
-                        if (back == true) {
-                            g.fillStyle = "#000000";
-                            g.fillRect(0, 0, 1000, 500);
-
-                        }
-                    }
-                }
-
-
             }
         }
 
 
 
         function onMouseClick1(e) {
-            if (e.x > 390 && e.x < 440 && e.y > 280 && e.y < 300) {
+            if (e.x > 330 && e.x < 645 && e.y > 170 && e.y < 220) {
 
                 g.fillStyle = "#000000";
                 g.fillRect(0, 0, 1000, 500);
@@ -126,7 +106,6 @@
                 canvas.addEventListener("mousemove", onMouseMove);
                 canvas.removeEventListener("click", onMouseClick1);
                 canvas.removeEventListener("click", onMouseClick2);
-                canvas.removeEventListener("click", onMouseClick3);
             }
         }
 
@@ -134,7 +113,6 @@
 
         canvas.addEventListener("click", onMouseClick1);
         canvas.addEventListener("click", onMouseClick2);
-        canvas.addEventListener("click", onMouseClick3);
     </script>
 </body>
 
