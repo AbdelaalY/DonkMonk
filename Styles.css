@@ -2,7 +2,7 @@ img {
     width: 400px;
 }
 
-backround-color:Grays body {
+body {
     background-image: url("http://media.danoah.com/wp-content/uploads/2015/08/18014049/weirdest-pictures-on-the-internet-24.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,7 +18,9 @@ h1 {
     color: red;
 }
 
-p {
-    color: white;
+p1 {
+    color: gray;
     font-size: 12px;
 }
+
+p2 {}
