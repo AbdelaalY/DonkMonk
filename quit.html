@@ -1,53 +1,118 @@
+<!DOCTYPE html>
 <html>
 
-<body>
-    <script>
-
-function keyPressed() {
-    if (keyCode == 8) {
-        input = shorten(input);
-    } else if (keyCode == 13) {
-        fill("#222222");
-        rect(0, 450, 500, 50);
-        textSize(20);
-        fill("#dddddd");
-      if(start == true){
-       search(output, "start", interaction, start = false );
-      }
-        input = [];
-    }
-}
-
-function keyTyped() {
-    input.push(key);
-}
-var start = true;
-
-function homeScreen() {
-    fill("#000000");
-    rect(0, 0, 500, 500);
-    fill("#222222");
-    rect(0, 450, 500, 50);
-    textSize(20);
-    fill("#dddddd");
-    text("Type begin to continue", 20, 480);
-}
-
-    function basic() {
-        fill("#222222");
-        rect(0, 450, 500, 50);
-        textSize(20);
-        fill("#dddddd");
-        output = join(input, blah);
-        text(output, 20, 485);
-        if (start == true) {
-            homeScreen();
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        canvas {
+            border: 1px solid #d3d3d3;
+            background-color: #000000;
         }
-    }
+    </style>
+</head>
 
-    function draw() {
-        basic()
-    }
+<body>
+    <canvas id="canvas" width="1000" height="500"></canvas>
+
+    <script>
+        var x = 430;
+        var y = 270;
+        var canvas = document.getElementById("canvas");
+        var g = canvas.getContext("2d");
+
+
+        g.fillStyle = "#ff0000";
+        g.font = "50px Trebuchet";
+        g.fillText("Quit the game:the game", 240, 100);
+
+        g.fillStyle = "#ffffff";
+        g.fillRect(335, 170, 300, 40);
+        g.fillStyle = "#ff0000";
+        g.font = "30px Trebuchet";
+        g.fillText("Start Quiting the game", 350, 200);
+
+        g.fillStyle = "#ffffff";
+        g.fillRect(410, 227, 170, 30);
+        g.fillStyle = "#ff0000";
+        g.font = "30px Trebuchet";
+        g.fillText("options", 450, 250);
+
+        g.fillStyle = "#ffffff";
+        g.fillRect(420, 277, 150, 30);
+        g.fillStyle = "#ff0000";
+        g.font = "30px Trebuchet";
+        g.fillText("credits", 450, 300);
+
+        g.fillStyle = "#ffffff";
+        g.fillRect(380, 327, 230, 30);
+        g.fillStyle = "#ff0000";
+        g.font = "30px Trebuchet";
+        g.fillText("Quit quit the game", 380, 350);
+
+
+
+
+
+
+        function onMouseClick2(e) {
+            if (e.x > 417 && e.x < 592 && e.y > 237 && e.y < 270) {
+                g.fillStyle = "#000000";
+                g.fillRect(0, 0, 1000, 500);
+
+                g.fillStyle = "#ffffff";
+                g.fillRect(380, 127, 180, 30);
+                g.fillStyle = "#ff0000";
+                g.font = "30px Trebuchet";
+                g.fillText("Quit Color", 420, 150);
+
+                g.fillStyle = "#ffffff";
+                g.fillRect(390, 230, 200, 30);
+                g.fillStyle = "#ff0000";
+                g.font = "30px Trebuchet";
+                g.fillText("Allow quiting", 400, 252);
+
+            }
+        }
+
+
+
+        function onMouseClick1(e) {
+            if (e.x > 330 && e.x < 645 && e.y > 170 && e.y < 220) {
+
+                g.fillStyle = "#000000";
+                g.fillRect(0, 0, 1000, 500);
+                g.fillStyle = "#ffffff";
+                g.fillRect(420, 200, 200, 100);
+                g.fillStyle = "#ff0000";
+                g.font = "70px Georgia";
+                g.fillText("QUIT", x, y);
+
+                function onMouseMove(e) {
+                    if (e.x > x && e.x < x + 200 && e.y > y - 100 && e.y < y) {
+                        console.log(e.x + ", " + e.y);
+                        x = Math.floor((Math.random() * 800) + 0);
+                        y = Math.floor((Math.random() * 450) + 50);
+                        g.fillStyle = "#000000";
+                        g.fillRect(0, 0, 1000, 500);
+                        g.fillStyle = "#ffffff";
+                        g.fillRect(x, (y - 90), 200, 100);
+                        g.fillStyle = "#ff0000";
+                        g.font = "70px Georgia";
+                        g.fillText("QUIT", x, y - 20);
+
+
+                    }
+                }
+                canvas.addEventListener("mousemove", onMouseMove);
+                canvas.removeEventListener("click", onMouseClick1);
+                canvas.removeEventListener("click", onMouseClick2);
+            }
+        }
+
+
+
+        canvas.addEventListener("click", onMouseClick1);
+        canvas.addEventListener("click", onMouseClick2);
     </script>
 </body>
 
