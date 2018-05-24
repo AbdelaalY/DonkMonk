@@ -28,6 +28,7 @@ p1 {
 }
 
 
+<<<<<<< HEAD
 .button {
     border: 2px solid #ffffff;
     background: #0000ff;
@@ -114,3 +115,5 @@ color: #8f8f8f;
     background-image: -ms-linear-gradient(top, #ff0000 0%, #0000ff 100%);
     color: #000000;
 }
+=======
+>>>>>>> 8d982942665e48d6ed49ebbe072c393dcf47edf1
