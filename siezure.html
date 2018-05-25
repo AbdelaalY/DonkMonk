@@ -6,7 +6,7 @@
     <style>
         canvas {
             border: 1px solid #d3d3d3;
-            background-color: rgb(r, g, b);
+            background-color: rgb(0, 0, 0);
         }
     </style>
 </head>
@@ -14,19 +14,22 @@
 <body>
     <canvas id="canvas" width="1000" height="500"></canvas>
 
-
     <script>
-        var r = Math.floor((Math.random() * 255) + 0);
-        var g = Math.floor((Math.random() * 255) + 0);
-        var b = Math.floor((Math.random() * 255) + 0);
-        console.log(r, g, b);
-        // function onMouseMove(e) {
-        //  if (e.x > 0 || e.y > 0) {
-        //  r = math.floor((math.random() * 255) + 0);
-        // g = math.floor((math.random() * 255) + 0);
-        // b = math.floor((math.random() * 255) + 0);
-        //}
-        //  }
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+
+        function onMouseMove(e) {
+            // console.log(e.x + ", " + e.y);
+            if ((e.x >= 0 && e.x <= 1000) && (e.y >= 0 && e.y <= 500)) {
+                hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+                ctx.strokeStyle = hue;
+                ctx.fillStyle = hue;
+                ctx.fillRect(0, 0, 1000, 500);
+                ctx.stroke();
+            }
+        }
+        canvas.addEventListener("mousemove", onMouseMove);
     </script>
 </body>
 
