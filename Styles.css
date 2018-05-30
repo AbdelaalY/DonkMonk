@@ -37,7 +37,7 @@ button {
     background: -ms-linear-gradient(top, #ff0000, #0000ff);
     background: -o-linear-gradient(top, #ff0000, #0000ff);
     background-image: -ms-linear-gradient(top, #ff0000 0%, #0000ff 100%);
-    padding: 9px 18px;
+    padding: 1px 18px;
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
     border-radius: 16px;
