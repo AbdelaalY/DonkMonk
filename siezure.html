@@ -21,11 +21,13 @@
 </head>
 
 <body>
-    <canvas id="canvas" style = "position: absolute; left:0px; top: 0px;" ></canvas> canvas>
+    <canvas id='canvas' style = 'position: absolute; left:0px; top: 0px;' >
+        
+    </canvas>
 
     <script>
-        var c = document.getElementById("canvas");
-        var ctx = c.getContext("2d");
+        var c = document.getElementById('canvas');
+        var ctx = c.getContext('2d');
         var r = (Math.floor(Math.random() * 256));
         var g = (Math.floor(Math.random() * 256));
         var b = (Math.floor(Math.random() * 256));
@@ -33,8 +35,11 @@
         var color = 0;
         
         initialize();
+        
         function initialize(){
             window.addEventListener("resize",resizeCanvas,false);
+            console.log("oof");
+            resizeCanvas()
         }
         
         function redraw(){
@@ -42,12 +47,13 @@
             ctx.lineWidth = "5";
             ctx.strokeRect(0,0,window.innerWidth,window.innerHeight);
         }
-      function resizeCanvas(){
-          c.width = window.innerWidth;
-          c.height = window.innerHeight;
-          redraw();
-      }
-
+        
+        function resizeCanvas(){
+            c.width = window.innerWidth;
+            c.height = window.innerHeight;
+            redraw();
+        }
+        
         function onMouseMove(e) {
             // console.log(e.x + ", " + e.y);
             if ((e.x >= 0 && e.x <= 1000) && (e.y >= 0 && e.y <= 500)) {
@@ -56,7 +62,7 @@
                 ctx.fillStyle = color;
                 ctx.fillRect(0, 0, 1000, 500);
                 ctx.stroke();
-                r = (Math.floor(Math.random() * 256));
+                 r = (Math.floor(Math.random() * 256));
                  g = (Math.floor(Math.random() * 256));
                  b = (Math.floor(Math.random() * 256));
              //   r = 0;
