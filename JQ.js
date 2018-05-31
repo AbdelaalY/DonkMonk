@@ -11,7 +11,7 @@ var did = 0;
 var display = "";
 var direction = 0;
 var nothing = "";
-var inv = [];
+var inv = ["hands"];
 var D20 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 var events = [{
    "name": "A WORG IS HERE","what" : "WORG", "specific" : 10, "weak" : "sword"},{
@@ -360,7 +360,7 @@ function does(what,when) {
     } else if(what.action == "all") {
       var have = "";
       gameState = "your inventory";
-      for (i=0;i<=(inv.length-1);i++){
+      for (i=1;i<=(inv.length-1);i++){
         have += ("\n" + inv[i].name);
       }
       details = have;
