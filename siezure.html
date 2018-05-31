@@ -1,6 +1,5 @@
 <!<!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
@@ -38,8 +37,7 @@
         
         function initialize(){
             window.addEventListener("resize",resizeCanvas,false);
-            console.log("oof");
-            resizeCanvas()
+            resizeCanvas();
         }
         
         function redraw(){
@@ -49,6 +47,7 @@
         }
         
         function resizeCanvas(){
+            console.log("oof");
             c.width = window.innerWidth;
             c.height = window.innerHeight;
             redraw();
@@ -56,11 +55,11 @@
         
         function onMouseMove(e) {
             // console.log(e.x + ", " + e.y);
-            if ((e.x >= 0 && e.x <= 1000) && (e.y >= 0 && e.y <= 500)) {
+            if ((e.x >= 0 && e.x <= window.innerWidth) && (e.y >= 0 && e.y <= window.innerHeight)) {
                 color = 'rgb(' + r + ',' + g + ',' + b + ')';
                 ctx.strokeStyle = color;
                 ctx.fillStyle = color;
-                ctx.fillRect(0, 0, 1000, 500);
+                ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
                 ctx.stroke();
                  r = (Math.floor(Math.random() * 256));
                  g = (Math.floor(Math.random() * 256));
