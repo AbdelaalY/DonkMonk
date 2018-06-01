@@ -47,7 +47,6 @@
         }
         
         function resizeCanvas(){
-            console.log("oof");
             c.width = window.innerWidth;
             c.height = window.innerHeight;
             redraw();
@@ -57,23 +56,23 @@
             // console.log(e.x + ", " + e.y);
             if ((e.x >= 0 && e.x <= window.innerWidth) && (e.y >= 0 && e.y <= window.innerHeight)) {
                 color = 'rgb(' + r + ',' + g + ',' + b + ')';
+                console.log(color);
                 ctx.strokeStyle = color;
                 ctx.fillStyle = color;
                 ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
                 ctx.stroke();
-                 r = (Math.floor(Math.random() * 256));
-                 g = (Math.floor(Math.random() * 256));
-                 b = (Math.floor(Math.random() * 256));
-          
-                if (r == g && g == b) {
-                    win = true;
+                r = (Math.floor(Math.random() * 256));
+                g = (Math.floor(Math.random() * 256));
+                b = (Math.floor(Math.random() * 256));
+              
+                if(r==g==b){
+                    win=true;
                 }
                 
-                while(win == true) {
-                    console.log("oof");
+            while(win == true){
                     ctx.fillStyle = "#ff0000";
-                    ctx.font = "50px Trebuchet";
-                    ctx.fillText("Quit the game:the game", 500, 100);
+                        ctx.font = "70px Georgia";
+                        ctx.fillText("YA Mum GAy",500 ,500);
                 }
             }
         }
