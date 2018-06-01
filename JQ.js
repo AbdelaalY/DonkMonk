@@ -4,20 +4,20 @@ function setup() {
 }
 
 var emergency = 0;
-var eventText = ""
+var eventText = "";
 var input = [];
-var enter = ">"
+var enter = ">";
 var did = 0;
 var display = "";
 var direction = 0;
 var nothing = "";
 var inv = ["hands"];
-var D20 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+var D20 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 var events = [{
-   "name": "A WORG IS HERE","what" : "WORG", "specific" : 10, "weak" : "sword"},{
-   "name": "","what" : "what", "specific" : 15, "weak" : "sword"},{
-   "name": "","what" : "what", "specific" : 20, "weak" : "sword"},{
-   "name": "","what" : "what", "specific" : 25, "weak" : "sword"}];
+   "name": "A WORG IS HERE","what" : "WORG", "specific" : 10, "weak" : "SWORD"},{
+   "name": "A TROLL IS HERE","what" : "what", "TROLL" : 14, "weak" : "AXE"},{
+   "name": "OOZE IS HERE","what" : "what", "OOZE" : 18, "weak" : "TORCH"},{
+   "name": "A DRAGON IS HERE","what" : "what", "DRAGON" : 24, "weak" : "LANCE"}];
 var cmd = [{
    "name": "NORTH","action" : "move", "specific" : "north"},{
    "name": "EAST","action" : "move", "specific" : "east"},{
@@ -34,59 +34,407 @@ var cmd = [{
    "name": "INVENTORY","action" : "all", "specific" : ""},{
    "name": "ATTACK","action" : "attack", "specific" : ""},{
    "name": "INSPECT","action" : "READ", "specific" : ""},{
-   "name": "READ","action" : "READ", "specific" : ""}];
+   "name": "READ","action" : "READ", "specific" : ""},{
+   "name": "BACK","action" : "home", "specific" : ""}];
 var item = [{
-   "name": "BOOK","action" : "", "specific" : "Yeah, I have no idea what to write in this book"},{
+   "name": "BOOK","action" : "", "specific" : "Yeah, I had no idea what to write in this book"},{
    "name": "HAT","action" : "", "specific" : "It is a large fadora"},{
    "name": "JOBE","action" : "", "specific" : "... ~ JOBE ~ ..."},{
-   "name": "SWORD","action" : "", "specific" : "good aginst WORGs"},{
-   "name": "HAMMER","action" : "", "specific" : "It's hammer time"}];
+   "name": "SWORD","action" : "", "specific" : "Good aginst WORGs I think"},{
+   "name": "HAMMER","action" : "", "specific" : "It's hammer time"},{
+   "name": "JEWEL","action" : "", "specific" : "Very valuable jewel"},,{
+   "name": "GOLD","action" : "", "specific" : "It's oddly heavy"},{
+   "name": "AXE","action" : "", "specific" : "Probably could chop a head off"},{
+   "name": "TORCH","action" : "", "specific" : "OOOooOOhHHhhHHhh... It's still on fire"},{
+   "name": "LANCE","action" : "", "specific" : "Very sturdy and strong enuf to kill a dragon or something"},{
+   "name": "CROWN","action" : "", "specific" : "No head to go with it, I'd say it's yours"},{
+   "name": "COIN","action" : "", "specific" : "Heads and Tails"},{
+   "name": "FADORA","action" : "", "specific" : "I think it might be confortable"},{
+   "name": "TREASURE","action" : "", "specific" : "What else do you need to know, it's treasure"},{
+   "name": "KNIFE","action" : "", "specific" : "This is a scary sharp knife"},{
+   "name": "PAMPHLET","action" : "", "specific" : "Didn't finish this yet"},{
+   "name": "TREE","action" : "", "specific" : "Somehow you picked that up"},{
+   "name": "PAINTING","action" : "", "specific" : "Valuable and buitiful"},{
+   "name": "SCROLL","action" : "", "specific" : "It says you should kill the dragon with the lance or something"},{
+   "name": "TAPESTRY","action" : "", "specific" : "Smoothly weaved"},{
+   "name": "Þ","action" : "", "specific" : "This is the letter Þ pronounced Þorn or thorn"},{
+   "name": ".","action" : "", "specific" : "cool you stole the period off the sentence"}];
 var gameState = "'LOOK' To Begin";
 var details = "Type 'HELP' for a list of commands";
 var QR = "";
 var rooms = [{
-  "name":"start room",
-  "description":"outside of the school",
-  "north":1,
-  "east":3,
-  "south":"null",
-  "west":"null",
-  "spec":"",
-  "event":"",
-  "contains":[item[0],item[1]]},{
-    
-  "name":"end room",
-  "description":"the pologs",
-  "north":"null",
-  "east":2,
-  "south":0,
-  "west":"null",
-  "spec":"encounter",
-  "event": 0,
-  "contains":[item[1]]},{
-    
-  "name":"field north",
-  "description":"outside",
-  "north":"null",
-  "east":"null",
-  "south":3,
+  "name":"Wonderful Grove",
+  "description":"You stand in a buitiful grove surrounded by trees. To the east you can see a clearing that apears to border a large cave entrence.",
+  "north":2,
+  "east":6,
+  "south":5,
   "west":1,
   "spec":"",
   "event":"",
-  "contains":[item[2]]},{
+  "contains":[item[16]]},{
     
-  "name":"inside home",
-  "description":"home",
+  "name":"The Forest",
+  "description":"You stand in a forest with trees to every side. It apears as if something big came through here heading west.",
   "north":2,
-  "east":"null",
-  "south":"null",
-  "west":0,
+  "east":0,
+  "south":5,
+  "west":3,
+  "spec":"",
+  "event": "",
+  "contains":[]},{
+    
+  "name":"The Forest",
+  "description":"You stand in a forest with trees to every side.",
+  "north":5,
+  "east":6,
+  "south":0,
+  "west":1,
   "spec":"",
   "event":"",
-  "contains":[item[3]]},{
+  "contains":[]},{
+    
+  "name":"The Deep Forest",
+  "description":"You stand in a deep dark forest with trees to every side.",
+  "north":"null",
+  "east":1,
+  "south":"null",
+  "west":"null",
+  "spec":"encounter",
+  "event":0,
+  "contains":[item[1],item[1]]},{
     
   "name":"Gates of Hell",
   "description":"You are dead and you stand before the Gates of Hell",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name": "The Forest",
+  "description":"You stand in a forest with trees to every side.",
+  "north":0,
+  "east":6,
+  "south":2,
+  "west":1,
+  "spec":"",
+  "event":"",
+  "contains":[item[17]]},{
+    
+  "name":"6",
+  "description":"",
+  "north":2,
+  "east":7,
+  "south":5,
+  "west":0,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"7",
+  "description":"",
+  "north":"null",
+  "east":9,
+  "south":"null",
+  "west":6,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"8",
+  "description":"",
+  "north":"null",
+  "east":18,
+  "south":9,
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"9",
+  "description":"",
+  "north":8,
+  "east":12,
+  "south":10,
+  "west":7,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"10",
+  "description":"",
+  "north":9,
+  "east":13,
+  "south":11,
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"11",
+  "description":"",
+  "north":10,
+  "east":12,
+  "south":14,
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"12",
+  "description":"",
+  "north":"null",
+  "east":15,
+  "south":11,
+  "west":9,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"13",
+  "description":"",
+  "north":"null",
+  "east":16,
+  "south":14,
+  "west":10,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"14",
+  "description":"",
+  "north":13,
+  "east":21,
+  "south":11,
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"15",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":16,
+  "west":12,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"16",
+  "description":"",
+  "north":15,
+  "east":"null",
+  "south":"null",
+  "west":13,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"17",
+  "description":"",
+  "north":18,
+  "east":19,
+  "south":21,
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"18",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":17,
+  "west":8,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"19",
+  "description":"",
+  "north":"null",
+  "east":20,
+  "south":"null",
+  "west":17,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"20",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":19,
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"21",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"22",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"23",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"24",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"25",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"26",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"27",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"28",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"29",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"30",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"31",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"32",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"33",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"34",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"35",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"36",
+  "description":"",
+  "north":"null",
+  "east":"null",
+  "south":"null",
+  "west":"null",
+  "spec":"",
+  "event":"",
+  "contains":[]},{
+    
+  "name":"37",
+  "description":"",
   "north":"null",
   "east":"null",
   "south":"null",
@@ -100,7 +448,7 @@ var currentRoom = rooms[0];
 var currentEvent = "";
 
 
-function keyPressed() {
+function keyPressed(){
    if (keyCode == 8) {
      input = shorten(input);
    } else if (keyCode == 13) {
@@ -261,14 +609,14 @@ function does(what,when) {
         emergency = 0;
         look();
         if (currentRoom.spec == "encounter"){
-          fight(events[currentRoom.event])
+          fight(events[currentRoom.event]);
         }
       }  else {
         currentRoom = rooms[4];
         eventText = "DEATH";
         emergency = 0;
         look();
-        enter = "-"
+        enter = "-";
       }
       currentEvent = "";
     } else if(what.action == "attack") {
@@ -289,12 +637,12 @@ function does(what,when) {
             details += " you defeated the " + who.what + " with a critical hit";
           } else if(roll > currentEvent.specific){
             win();
-            details += " you defeated the " + who.what
+            details += " you defeated the " + who.what;
           } else if(roll == currentEvent.specific){
             win();
-            details += " you just barely defeated the " + who.what
+            details += " you just barely defeated the " + who.what;
           } else if(roll > (currentEvent.specific - 5)){
-            gameState = "You missed, but you dodged " + who.what + "'s counter attack"
+            gameState = "You missed, but you dodged " + who.what + "'s counter attack";
           } else if(roll <= (currentEvent.specific - 5)){
             currentRoom = rooms[4];
             eventText = "DEATH";
@@ -308,12 +656,12 @@ function does(what,when) {
             details += " you defeated the " + who.what + " with a critical hit";
           } else if(roll > (currentEvent.specific-5)){
             win();
-            details += " you defeated the " + who.what
+            details += " you defeated the " + who.what;
           } else if(roll = (currentEvent.specific-5)){
             win();
-            details += " you just barely defeated the " + who.what
+            details += " you just barely defeated the " + who.what;
           } else if(roll > ((currentEvent.specific-5) - 5)){
-            gameState = "You missed, but you dodged " + who.what + "'s counter attack"
+            gameState = "You missed, but you dodged " + who.what + "'s counter attack";
           } else if(roll <= ((currentEvent.specific-5) - 5)){
             currentRoom = rooms[4];
             eventText = "DEATH";
@@ -324,31 +672,33 @@ function does(what,when) {
         }
       }
     } else{
-      gameState = "you can't " + what.action + "right now, your fighting"
+      gameState = "you can't " + what.action + "right now, your fighting";
     }
   } else {
     if(what.action == "move"){
       move(what);
       if (currentRoom.spec == "encounter"){
-        fight(events[currentRoom.event])
+        fight(events[currentRoom.event]);
       }
     } else if(what.action == "READ") {
       if (when == 0){
-        gameState = "what should I look at?"
+        gameState = "what should I look at?";
       } else {
         search(when,4);
       }
     } else if(what.action == "take") {
       direction = 0;
       if (when == 0){
-        gameState = "take what?"
+        gameState = "take what?";
       } else {
         search(when,1);
       }
+    } else if(what.action == "home") {
+      
     } else if(what.action == "replace") {
       direction = 1;
       if (when == 0){
-        gameState = "replace what?"
+        gameState = "replace what?";
       } else {
         search(when,1);
       }
@@ -415,7 +765,7 @@ function move(what) {
     }
 }
 
-function draw() {
+function draw(){
   background("#000000");
   fill("#222222");
   rect(0, 450, 500, 50);

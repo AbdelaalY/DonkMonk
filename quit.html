@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <style>
         canvas {
             border: 1px solid #d3d3d3;
@@ -75,7 +76,6 @@
         }
 
 
-
         function onMouseClick1(e) {
             if (e.x > 330 && e.x < 645 && e.y > 170 && e.y < 220) {
 
@@ -108,8 +108,6 @@
                 canvas.removeEventListener("click", onMouseClick2);
             }
         }
-
-
 
         canvas.addEventListener("click", onMouseClick1);
         canvas.addEventListener("click", onMouseClick2);

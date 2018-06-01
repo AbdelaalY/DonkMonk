@@ -24,6 +24,12 @@ p1 {
     font-size: 12px;
 }
 
+p2 {
+    color: gray;
+    font-size: 12px;
+    text-align: center;
+}
+
 button {
     margin: 100px;
 }
@@ -64,6 +70,7 @@ button {
     background: -o-linear-gradient(top, #0000ff, #ff0000);
     background-image: -ms-linear-gradient(top, #0000ff 0%, #ff0000 100%);
     color: #8f8f8f;
+    margin-bottom: 100px;
 }
 
 .button:active {
