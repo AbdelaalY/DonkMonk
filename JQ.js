@@ -11,7 +11,7 @@ var emergency = 0;
 var did = 0;
 var direction = 0;
 var nothing = "";
-var inv = ["hands"];
+var inv = [{"name": "HANDS","specific" : "you do that"}];
 var QR = "";//I would rather not spell quarry
 var currentEvent = "";
 
@@ -71,7 +71,8 @@ var item = [{
    "name": "SCROLL","action" : "", "specific" : "It says you should kill the dragon with the lance or something"},{
    "name": "TAPESTRY","action" : "", "specific" : "Smoothly weaved"},{
    "name": "ANVIL","action" : "", "specific" : "Dang, that's heavy"},{
-   "name": ".","action" : "", "specific" : "cool you stole the period off the sentence"}];
+   "name": ".","action" : "", "specific" : "cool you stole the period off the sentence"},{
+    "name": "HANDS","specific" : "you do that"}];
 var rooms = [{
   "name":"Wonderful Grove",
   "description":"You stand in a beautiful grove surrounded by trees. To the east, you can see a clearing that appears to border a large cave entrance.",
