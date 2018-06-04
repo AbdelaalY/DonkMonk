@@ -36,6 +36,7 @@
         var win = false;
         var color = 0;
         var color2 = 'rgb(' + r2 + ',' + g2 + ',' + b2 + ')';
+        var win2 = false;
         
         initialize();
         
@@ -81,7 +82,9 @@
             if(win == true){
                     ctx.fillStyle = color2;
                         ctx.font = "70px Georgia";
+                        if(win2 == false){
                         ctx.fillText("Congrats! You Don't Have Epilepsy",500 ,500);
+                        }
                 }
             }
         }
