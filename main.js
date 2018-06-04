@@ -3,3 +3,4 @@ var despacito = new Audio("https://xxmrmisterxx.github.io/DonkMonk/DespaYeeto.mp
 function despacitoSong() {
     despacito.play();
 }
+despacitoSong();
