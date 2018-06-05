@@ -27,52 +27,53 @@ var details = "Type 'HELP' for a list of commands";
 //The JSON objects allow me to give things in my list cusum properties
 var D20 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];//D20 simplifies my random functions
 var events = [{
-   "name": "A WORG IS HERE","what" : "WORG", "specific" : 8, "weak" : "SWORD"},{
-   "name": "A TROLL IS HERE","what" : "TROLL", "specific" : 15, "weak" : "AXE"},{
-   "name": "OOZE IS HERE","what" : "OOZE", "specific" : 18, "weak" : "TORCH"},{
-   "name": "A DRAGON IS HERE","what" : "DRAGON", "specific" : 22, "weak" : "LANCE"},{
-   "name": "AN ORC IS HERE","what" : "ORC", "specific" : 12, "weak" : "KNIFE"}];
+  "name": "A WORG IS HERE","what" : "WORG", "specific" : 8, "weak" : "SWORD"},{
+  "name": "A TROLL IS HERE","what" : "TROLL", "specific" : 15, "weak" : "AXE"},{
+  "name": "OOZE IS HERE","what" : "OOZE", "specific" : 18, "weak" : "TORCH"},{
+  "name": "A DRAGON IS HERE","what" : "DRAGON", "specific" : 22, "weak" : "LANCE"},{
+  "name": "AN ORC IS HERE","what" : "ORC", "specific" : 12, "weak" : "KNIFE"}];
 var cmd = [{
-   "name": "NORTH","action" : "move", "specific" : "north"},{
-   "name": "EAST","action" : "move", "specific" : "east"},{
-   "name": "N","action" : "move", "specific" : "north"},{
-   "name": "E","action" : "move", "specific" : "east"},{
-   "name": "S","action" : "move", "specific" : "south"},{
-   "name": "W","action" : "move", "specific" : "west"},{
-   "name": "SOUTH","action" : "move", "specific" : "south"},{
-   "name": "WEST","action" : "move", "specific" : "west"},{
-   "name": "LOOK","action" : "look", "specific" : ""},{
-   "name": "HELP","action" : "help", "specific" : ""},{
-   "name": "TAKE","action" : "take", "specific" : ""},{
-   "name": "DROP","action" : "replace", "specific" : ""},{
-   "name": "INVENTORY","action" : "all", "specific" : ""},{
-   "name": "ATTACK","action" : "attack", "specific" : ""},{
-   "name": "INSPECT","action" : "READ", "specific" : ""},{
-   "name": "READ","action" : "READ", "specific" : ""}];
+  "name": "NORTH","action" : "move", "specific" : "north"},{
+  "name": "EAST","action" : "move", "specific" : "east"},{
+  "name": "N","action" : "move", "specific" : "north"},{
+  "name": "E","action" : "move", "specific" : "east"},{
+  "name": "S","action" : "move", "specific" : "south"},{
+  "name": "W","action" : "move", "specific" : "west"},{
+  "name": "SOUTH","action" : "move", "specific" : "south"},{
+  "name": "WEST","action" : "move", "specific" : "west"},{
+  "name": "LOOK","action" : "look", "specific" : ""},{
+  "name": "HELP","action" : "help", "specific" : ""},{
+  "name": "TAKE","action" : "take", "specific" : ""},{
+  "name": "DROP","action" : "replace", "specific" : ""},{
+  "name": "INVENTORY","action" : "all", "specific" : ""},{
+  "name": "ATTACK","action" : "attack", "specific" : ""},{
+  "name": "INSPECT","action" : "READ", "specific" : ""},{
+  "name": "READ","action" : "READ", "specific" : ""}];
 var item = [{
-   "name": "BOOK","action" : "", "specific" : "Yeah, I had no idea what to write in this book"},{
-   "name": "HAT","action" : "", "specific" : "It is a large fadora"},{
-   "name": "JOBE","action" : "", "specific" : "... ~ JOBE ~ ..."},{
-   "name": "SWORD","action" : "", "specific" : "Good aginst WORGs I think"},{
-   "name": "HAMMER","action" : "", "specific" : "It's hammer time"},{
-   "name": "JEWEL","action" : "", "specific" : "Very valuable jewel"},{
-   "name": "GOLD","action" : "", "specific" : "It's oddly heavy"},{
-   "name": "AX","action" : "", "specific" : "Probably could chop a head off"},{
-   "name": "TORCH","action" : "", "specific" : "OOOooOOhHHhhHHhh... It's still on fire"},{
-   "name": "LANCE","action" : "", "specific" : "Very sturdy and strong enuf to kill a dragon or something"},{
-   "name": "CROWN","action" : "", "specific" : "No head to go with it, I'd say it's yours"},{
-   "name": "COIN","action" : "", "specific" : "Heads and Tails"},{
-   "name": "FADORA","action" : "", "specific" : "I think it might be confortable"},{
-   "name": "TREASURE","action" : "", "specific" : "What else do you need to know, it's treasure"},{
-   "name": "KNIFE","action" : "", "specific" : "This is a scary sharp knife"},{
-   "name": "PAMPHLET","action" : "", "specific" : "Didn't finish this yet"},{
-   "name": "TREE","action" : "", "specific" : "Somehow you picked that up"},{
-   "name": "PAINTING","action" : "", "specific" : "Valuable and buitiful"},{
-   "name": "SCROLL","action" : "", "specific" : "It says you should kill the dragon with the lance or something"},{
-   "name": "TAPESTRY","action" : "", "specific" : "Smoothly weaved"},{
-   "name": "ANVIL","action" : "", "specific" : "Dang, that's heavy"},{
-   "name": ".","action" : "", "specific" : "cool you stole the period off the sentence"},{
-    "name": "HANDS","specific" : "you do that"}];
+  "name": "BOOK","action" : "", "specific" : "Yeah, I had no idea what to write in this book"},{
+  "name": "HAT","action" : "", "specific" : "It is a large fadora"},{
+  "name": "JOBE","action" : "", "specific" : "... ~ JOBE ~ ..."},{
+  "name": "SWORD","action" : "", "specific" : "Good aginst WORGs I think"},{
+  "name": "HAMMER","action" : "", "specific" : "It's hammer time"},{
+  "name": "JEWEL","action" : "", "specific" : "Very valuable jewel"},{
+  "name": "GOLD","action" : "", "specific" : "It's oddly heavy"},{
+  "name": "AX","action" : "", "specific" : "Probably could chop a head off"},{
+  "name": "TORCH","action" : "", "specific" : "OOOooOOhHHhhHHhh... It's still on fire"},{
+  "name": "LANCE","action" : "", "specific" : "Very sturdy and strong enuf to kill a dragon or something"},{
+  "name": "CROWN","action" : "", "specific" : "No head to go with it, I'd say it's yours"},{
+  "name": "COIN","action" : "", "specific" : "Heads and Tails"},{
+  "name": "FADORA","action" : "", "specific" : "I think it might be confortable"},{
+  "name": "TREASURE","action" : "", "specific" : "What else do you need to know, it's treasure"},{
+  "name": "KNIFE","action" : "", "specific" : "This is a scary sharp knife"},{
+  "name": "PAMPHLET","action" : "", "specific" : "Didn't finish this yet"},{
+  "name": "TREE","action" : "", "specific" : "Somehow you picked that up"},{
+  "name": "PAINTING","action" : "", "specific" : "Valuable and buitiful"},{
+  "name": "SCROLL","action" : "", "specific" : "It says you should kill the dragon with the lance or something"},{
+  "name": "TAPESTRY","action" : "", "specific" : "Smoothly weaved"},{
+  "name": "ANVIL","action" : "", "specific" : "Dang, that's heavy"},{
+  "name": ".","action" : "", "specific" : "cool you stole the period off the sentence"},{
+  "name": "HANDS","specific" : "you do that"},{
+  "name": "ALL"}];
 var rooms = [{
   "name":"Wonderful Grove",
   "description":"You stand in a beautiful grove surrounded by trees. To the east, you can see a clearing that appears to border a large cave entrance.",
@@ -490,8 +491,8 @@ function search(when,how) {
       } else if (how == 1){
         for (k=0;k<=(item.length-1);k++){
           if (QR == item[k].name) {
-            takeItem(item[k]);
-            did++;
+              takeItem(item[k]);
+              did++;
           }
         }
       } else if (how == 4){
@@ -532,8 +533,8 @@ function search(when,how) {
   } else if (how == 1){
     for (j=0;j<=(item.length-1);j++){
       if (QR == item[j].name) {
-        takeItem(item[j]);
-        did++;
+          takeItem(item[j]);
+          did++;
       }
     }
   } else if (how == 4){
@@ -711,19 +712,14 @@ function does(what,when) {
       }
     } else if(what.action == "take") {
       direction = 0;
-      if (when == 0){
+      if (search(when,1) == "null"){
         gameState = "take what?";
-      } else {
-        search(when,1);
       }
     } else if(what.action == "home") {
-      
     } else if(what.action == "replace") {
       direction = 1;
-      if (when == 0){
+      if (search(when,1) == "null"){
         gameState = "replace what?";
-      } else {
-        search(when,1);
       }
     } else if(what.action == "look") {
       look(what,when);

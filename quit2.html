@@ -1,151 +1,147 @@
-<!<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        canvas {
-            border: 1px solid #d3d3d3;
-            background-color: rgb(0, 0, 0);
-        }
-            html, body {
-           width: 100%;
-			height: 100%;
-			margin: 0px;
-			border: 0;
-			overflow: hidden; 
-			display: block;  
-            }
-        
-    </style>
-</head>
+<!<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0" /><style>canvas {
+    border: 1px solid #d3d3d3;
+    background-color: rgb(0, 0, 0);
+}
 
-<body>
-    <canvas id='canvas' style = 'position: absolute; left:0px; top: 0px;' >
-        
-    </canvas>
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    border: 0;
+    overflow: hidden;
+    display: block;
+}
 
-    <script>
-        var c = document.getElementById('canvas');
-        var ctx = c.getContext('2d');
-        var color = 0;
-        var page =  0;
-        
-        initialize();
-        
-        function initialize(){
-            window.addEventListener("resize",resizeCanvas,false);
-            resizeCanvas();
-        }
-        
-        function redraw(){
-            ctx.strokeStyle = color;
-            ctx.lineWidth = "5";
-            ctx.strokeRect(0,0,window.innerWidth,window.innerHeight);
-            
-            if(page == 0){
-               ctx.fillStyle = "#ff0000";
-               ctx.font = "40px Trebuchet";
-               ctx.fillText("Quit the game : the game", (c.width/7), 100);
-                
-               ctx.fillStyle = "#ffffff";
-               ctx.fillRect((c.width/7)-10, 170, 300, 40);
-               ctx.fillStyle = "#ff0000";
-               ctx.font = "30px Trebuchet";
-               ctx.fillText("Start Quiting the game", (c.width/7), 200);
-              
-               ctx.fillStyle = "#ffffff";
-               ctx.fillRect((c.width/7)-10, 227, 170, 30);
-               ctx.fillStyle = "#ff0000";
-               ctx.font = "30px Trebuchet";
-               ctx.fillText("options", (c.width/7), 250);
-                 
-               ctx.fillStyle = "#ffffff";
-               ctx.fillRect((c.width/7)-10, 277, 150, 30);
-               ctx.fillStyle = "#ff0000";
-               ctx.font = "30px Trebuchet";
-               ctx.fillText("credits", (c.width/7), 300);
-              
-               ctx.fillStyle = "#ffffff";
-               ctx.fillRect((c.width/7)-10, 327, 230, 30);
-               ctx.fillStyle = "#ff0000";
-               ctx.font = "30px Trebuchet";
-               ctx.fillText("Quit quit the game", (c.width/7), 350);
-            } else if(page == 1){
-               ctx.fillStyle = "#000000";
-               ctx.fillRect(0, 0, c.width, c.height);
-               ctx.fillStyle = "#ffffff";
-               ctx.fillRect(x, (y - 90), 200, 100);
-               ctx.fillStyle = "#ff0000";
-               ctx.font = "70px Georgia";
-               ctx.fillText("QUIT", x, y - 20);
-            }
-        }
-        
-        function resizeCanvas(){
-            c.width = window.innerWidth;
-            c.height = window.innerHeight;
-            redraw();
-        }
-        
-        var x = 430;
-        var y = 270;
-        
-        function onMouseClick1(e) {
-            if (e.x > (c.width/7)-10 && e.x < (c.width/7)+290 && e.y > 170 && e.y < 210) {
+</style></head><body><canvas id='canvas' style='position: absolute; left:0px; top: 0px;'></canvas><script>var c=document.getElementById('canvas');
+var ctx=c.getContext('2d');
+var color=0;
+var page=0;
 
-                ctx.fillStyle = "#000000";
-                ctx.fillRect(0, 0, c.width, c.height);
-                ctx.fillStyle = "#ffffff";
-                ctx.fillRect(420, 200, 200, 100);
-                ctx.fillStyle = "#ff0000";
-                ctx.font = "70px Georgia";
-                ctx.fillText("QUIT", x, y);
-                c.addEventListener("mousemove", onMouseMove);
-                c.removeEventListener("click", onMouseClick1);
-                
-                page = 1;
-                
-            }  else if(e.x > (c.width/7)-10 && e.x < (c.width/7)+290 && e.y > 237 && e.y < 270) {
-                
-                ctx.fillStyle = "#000000";
-                ctx.fillRect(0, 0, c.width, c.height);
+initialize();
 
-                ctx.fillStyle = "#ffffff";
-                ctx.fillRect(380, 127, 180, 30);
-                ctx.fillStyle = "#ff0000";
-                ctx.font = "30px Trebuchet";
-                ctx.fillText("Quit Color", 420, 150);
+function initialize() {
+    window.addEventListener("resize", resizeCanvas, false);
+    resizeCanvas();
+}
 
-                ctx.fillStyle = "#ffffff";
-                ctx.fillRect(390, 230, 200, 30);
-                ctx.fillStyle = "#ff0000";
-                ctx.font = "30px Trebuchet";
-                ctx.fillText("Allow quiting", 400, 252);
-                
-            }
-        }
-        
-        function onMouseMove(e) {
-            if (e.x > x && e.x < x + 200 && e.y > y - 100 && e.y < y) {
-                console.log(e.x + ", " + e.y);
-                x = Math.floor((Math.random() * (c.width-200)));
-                y = Math.floor((Math.random() * (c.height-100))+50);
-                ctx.fillStyle = "#000000";
-                ctx.fillRect(0, 0, c.width, c.height);
-                ctx.fillStyle = "#ffffff";
-                ctx.fillRect(x, (y - 90), 200, 100);
-                ctx.fillStyle = "#ff0000";
-                ctx.font = "70px Georgia";
-                ctx.fillText("QUIT", x, y - 20);
-            }
-       }
-       
-       
-        
-    function onKeyDown(){}
-    c.addEventListener("keydown,",)
-        c.addEventListener("click", onMouseClick1);
-    </script>
-</body>
+function redraw() {
+    ctx.strokeStyle=color;
+    ctx.lineWidth="5";
+    ctx.strokeRect(0, 0, window.innerWidth, window.innerHeight);
 
-</html>
+    if(page==0) {
+        ctx.fillStyle="#ff0000";
+        ctx.font="40px Trebuchet";
+        ctx.fillText("Quit the game : the game", (c.width/7), 100);
+
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect((c.width/7)-10, 170, 300, 40);
+        ctx.fillStyle="#ff0000";
+        ctx.font="30px Trebuchet";
+        ctx.fillText("Start Quiting the game", (c.width/7), 200);
+
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect((c.width/7)-10, 227, 170, 30);
+        ctx.fillStyle="#ff0000";
+        ctx.font="30px Trebuchet";
+        ctx.fillText("options", (c.width/7), 250);
+
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect((c.width/7)-10, 277, 150, 30);
+        ctx.fillStyle="#ff0000";
+        ctx.font="30px Trebuchet";
+        ctx.fillText("credits", (c.width/7), 300);
+
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect((c.width/7)-10, 327, 230, 30);
+        ctx.fillStyle="#ff0000";
+        ctx.font="30px Trebuchet";
+        ctx.fillText("Quit quit the game", (c.width/7), 350);
+    }
+    else if(page==1) {
+        ctx.fillStyle="#000000";
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect(x, (y - 90), 200, 100);
+        ctx.fillStyle="#ff0000";
+        ctx.font="70px Georgia";
+        ctx.fillText("QUIT", x, y - 20);
+    }
+}
+
+function resizeCanvas() {
+    c.width=window.innerWidth;
+    c.height=window.innerHeight;
+    redraw();
+}
+
+var x=430;
+var y=270;
+
+function onMouseClick1(e) {
+    if (e.x > (c.width/7)-10 && e.x < (c.width/7)+290 && e.y > 170 && e.y < 210) {
+
+        ctx.fillStyle="#000000";
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect(420, 200, 200, 100);
+        ctx.fillStyle="#ff0000";
+        ctx.font="70px Georgia";
+        ctx.fillText("QUIT", x, y);
+        c.addEventListener("mousemove", onMouseMove);
+        c.removeEventListener("click", onMouseClick1);
+
+        page=1;
+
+    }
+    else if(e.x > (c.width/7)-10 && e.x < (c.width/7)+290 && e.y > 237 && e.y < 270) {
+
+        ctx.fillStyle="#000000";
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect(380, 127, 180, 30);
+        ctx.fillStyle="#ff0000";
+        ctx.font="30px Trebuchet";
+        ctx.fillText("Quit Color", 420, 150);
+
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect(390, 230, 200, 30);
+        ctx.fillStyle="#ff0000";
+        ctx.font="30px Trebuchet";
+        ctx.fillText("Allow quiting", 400, 252);
+
+    }
+}
+
+function onMouseMove(e) {
+    if (e.x > x && e.x < x + 200 && e.y > y - 100 && e.y < y) {
+        console.log(e.x + ", " + e.y);
+        x=Math.floor((Math.random() * (c.width-200)));
+        y=Math.floor((Math.random() * (c.height-100))+50);
+        ctx.fillStyle="#000000";
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect(x, (y - 90), 200, 100);
+        ctx.fillStyle="#ff0000";
+        ctx.font="70px Georgia";
+        ctx.fillText("QUIT", x, y - 20);
+    }
+}
+
+
+
+function onKeyDown(e) {
+    
+    ctx.fillStyle="#000000";
+    ctx.fillRect(0, 0, c.width, c.height);
+     ctx.fillStyle="#ff0000";
+        ctx.font="70px Georgia";
+         ctx.fillText("You Quit Quit The Game", x, y - 20);
+    
+}
+
+c.addEventListener("keydown", onKeyDown);
+c.addEventListener("click", onMouseClick1);
+</script></body></html>
