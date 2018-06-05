@@ -103,7 +103,7 @@ var rooms = [{
   "west":1,
   "spec":"",
   "event":"",
-  "contains":[]},{
+  "contains":[item[12]]},{
     
   "name":"The Deep Forest",
   "description":"You stand in a deep dark forest with trees to every side.",

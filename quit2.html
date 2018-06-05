@@ -17,6 +17,7 @@ body {
 var ctx=c.getContext('2d');
 var color=0;
 var page=0;
+var filler=[];
 
 initialize();
 
@@ -130,18 +131,6 @@ function onMouseMove(e) {
     }
 }
 
-
-
-function onKeyDown(e) {
-    
-    ctx.fillStyle="#000000";
-    ctx.fillRect(0, 0, c.width, c.height);
-     ctx.fillStyle="#ff0000";
-        ctx.font="70px Georgia";
-         ctx.fillText("You Quit Quit The Game", x, y - 20);
-    
-}
-
-c.addEventListener("keydown", onKeyDown);
 c.addEventListener("click", onMouseClick1);
+
 </script></body></html>
