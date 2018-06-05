@@ -1,98 +1,92 @@
-<!<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        canvas {
-            border: 1px solid #d3d3d3;
-            background-color: rgb(0, 0, 0);
-        }
-            html, body {
-           width: 100%;
-			height: 100%;
-			margin: 0px;
-			border: 0;
-			overflow: hidden; 
-			display: block;  
-            }
-        
-    </style>
-</head>
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0" /><style>canvas {
+    border: 1px solid #d3d3d3;
+    background-color: rgb(0, 0, 0);
+}
 
-<body>
-    <canvas id='canvas' style = 'position: absolute; left:0px; top: 0px;' >
-        
-    </canvas>
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    border: 0;
+    overflow: hidden;
+    display: block;
+}
 
-    <script>
-        var c = document.getElementById('canvas');
-        var ctx = c.getContext('2d');
-        var r = (Math.floor(Math.random() * 256));
-        var g = (Math.floor(Math.random() * 256));
-        var b = (Math.floor(Math.random() * 256));
-        var r2 = (Math.floor(Math.random() * 256));
-        var g2 = (Math.floor(Math.random() * 256));
-        var b2 = (Math.floor(Math.random() * 256));
-        var win = false;
-        var color = 0;
-        var color2 = 'rgb(' + r2 + ',' + g2 + ',' + b2 + ')';
-        var win2 = false;
-        
-        initialize();
-        
-        function initialize(){
-            window.addEventListener("resize",resizeCanvas,false);
-            resizeCanvas();
-        }
-        
-        function redraw(){
-            ctx.strokeStyle = color;
-            ctx.lineWidth = "5";
-            ctx.strokeRect(0,0,window.innerWidth,window.innerHeight);
-        }
-        
-        function resizeCanvas(){
-            c.width = window.innerWidth;
-            c.height = window.innerHeight;
-            redraw();
-        }
-        
-        function onMouseMove(e) {
-            // console.log(e.x + ", " + e.y);
-            if ((e.x >= 0 && e.x <= window.innerWidth) && (e.y >= 0 && e.y <= window.innerHeight)) {
-                color = 'rgb(' + r + ',' + g + ',' + b + ')';
-                color2 = 'rgb(' + r2 + ',' + g2+ ',' + b2 + ')';
-             //   console.log(color);
-                ctx.strokeStyle = color;
-                ctx.fillStyle = color;
-                ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-                ctx.stroke();
-                r = (Math.floor(Math.random() * 256));
-                g = (Math.floor(Math.random() * 256));
-                b = (Math.floor(Math.random() * 256));
-                r2 = (Math.floor(Math.random() * 256));
-                g2 = (Math.floor(Math.random() * 256));
-                b2 = (Math.floor(Math.random() * 256));
-              
-                if(r==g==b){
-                    win=true;
-                    console.log("yeet");
-                }
-                
-            if(win == true){
-                    ctx.fillStyle = color2;
-                        ctx.font = "70px Georgia";
-                        if(win2 == false){
-                        ctx.fillText("Congrats! You Don't Have Epilepsy",500 ,500);
-                        }else{
-                          ctx.fillText("And Your Commited",500 ,500);  
-                        }
-                }
-            }
-        }
-        canvas.addEventListener("mousemove", onMouseMove);
-    </script>
-    <div style="visibility:visible",id="music"><embed src="https://xxmrmisterxx.github.io/DonkMonk/Runninginthe90's.mp3" autostart=true loop=true></div>
-</body>
+</style></head><body><canvas id='canvas' style='position: absolute; left:0px; top: 0px;'></canvas><script>var c=document.getElementById('canvas');
+var ctx=c.getContext('2d');
+var r=(Math.floor(Math.random() * 256));
+var g=(Math.floor(Math.random() * 256));
+var b=(Math.floor(Math.random() * 256));
+var r2=(Math.floor(Math.random() * 256));
+var g2=(Math.floor(Math.random() * 256));
+var b2=(Math.floor(Math.random() * 256));
+var win=false;
+var color=0;
+var color2='rgb('+r2+','+g2+','+b2+')';
+var win2=false;
+var win3 = false;
 
-</html>
+initialize();
+
+function initialize() {
+    window.addEventListener("resize", resizeCanvas, false);
+    resizeCanvas();
+}
+
+function redraw() {
+    ctx.strokeStyle=color;
+    ctx.lineWidth="5";
+    ctx.strokeRect(0, 0, window.innerWidth, window.innerHeight);
+}
+
+function resizeCanvas() {
+    c.width=window.innerWidth;
+    c.height=window.innerHeight;
+    redraw();
+}
+
+function onMouseMove(e) {
+    // console.log(e.x + ", " + e.y);
+    if ((e.x >=0 && e.x <=window.innerWidth) && (e.y >=0 && e.y <=window.innerHeight)) {
+        color='rgb('+r+','+g+','+b+')';
+        color2='rgb('+r2+','+g2+','+b2+')'; //   console.log(color);
+        ctx.strokeStyle=color;
+        ctx.fillStyle=color;
+        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+        ctx.stroke();
+        r=(Math.floor(Math.random() * 256));
+        g=(Math.floor(Math.random() * 256));
+        b=(Math.floor(Math.random() * 256));
+       if (win==true){ 
+        r2=(Math.floor(Math.random() * 256));
+        g2=(Math.floor(Math.random() * 256));
+        b2=(Math.floor(Math.random() * 256));
+       }
+
+        if(r==g==b) {
+            win=true;
+            console.log("yeet");
+        }
+        else if (r2==g2==b2) {
+            win2=true;
+             console.log("yoot");
+        } else if (r2==g2==b2==r==g==b){
+            win3= true;
+            console.log("yeeted");
+        }
+
+        ctx.fillStyle=color2;
+        ctx.font="70px Georgia";
+     if(win3 == true){
+          ctx.fillText("Bepis", 500, 500);
+     }  else if(win ==true && win2==true) {
+            ctx.fillText("And Your Commited", 500, 500);
+        }
+           else if(win==true) {
+            ctx.fillText("Congrats! You Don't Have Epilepsy", 600, 500);
+        }
+    }
+}
+canvas.addEventListener("mousemove", onMouseMove);
+</script><div style="visibility:visible",id="music"><embed src="https://xxmrmisterxx.github.io/DonkMonk/Runninginthe90's.mp3" autostart=true loop=true></div></body></html>
